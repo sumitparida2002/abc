@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    background-color:#052125;
+    flex: 1;
+}
+
+.header_div {
+    background-color:#052125;
+} 
+
+.header_div a {
+    color:white;
+    border: none;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.bank_title{
+    color: white;
+}
+
+.nav_bar {
+    height: 3rem;
+    font-weight: bolder;
+}
+
+.nav_bar a {
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+}
+
+#language-select {
+    background-color: #052125;
+    color:white;
+    border: none;
+    font-weight: bolder;
+}
+
+.promotion_details{
+    color: white;
+}
+
+footer{
+    background-color:#316537; 
+}
+
+.copyRights {
+    color: white;
+}
