@@ -5,7 +5,7 @@ require_once 'head.php';
 require_once 'includes/header.php';
 ?>
 
-<main>
+<main class="signin_page_grid_container">
     <!--
         The method for the form is GET because we wanted to make sure that the password is
         exposed and also any user can inject data into the URL field easily.
@@ -24,17 +24,23 @@ require_once 'includes/header.php';
         In the authentication process, a potential hacker is informed about the existence of a certain
         username. If a hacker can access any usernames, he can try as many passwords for that account as possible.
      -->
-    <form action="" method="get">
-        <label for="name">Name</label>
-        <input type="text" name="name">
-        <label for="password">Password</label>
-        <input type="password" name="password">
-        <input type="submit" name="submit" value="Submit">
-    </form>
+    <div class="park_img">
+        <img src="Includes/images/AlgonquinPark.png" alt="Algonquin Park Image">
+    </div>
+    <div class="form_container">
+        <form action="" method="get">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <input class="signin_page_submit_btn" type="submit" name="submit" value="Submit">
+        </form>
+        <a href="signup.php" class="signUp">Sign Up for New Account</a>
+    </div>
 </main>
 
 <?php
-require_once 'footer.php';
+require_once 'Includes/footer.php';
 ?>
 
 <?php

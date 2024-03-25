@@ -18,19 +18,21 @@ require_once 'includes/header.php';
         Also, since the data coming from the form are not sanitized, hackers can inject Javascript
         Code into the application.
      -->
-    <form action="" method="get">
+<div class="sign_up_page_flex_container">
+    <form action="" method="get" class="signup_page_form">
         <label for="name">Name</label>
-        <input type="text" name="name">
-        <label for="email">email</label>
-        <input type="text" name="email">
+        <input type="text" name="name" id="name">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
         <label for="password">Password</label>
-        <input type="password" name="password">
+        <input type="password" name="password" id="password">
         <input type="submit" name="submit" value="Submit">
     </form>
+</div>
 </main>
 
 <?php
-require_once 'footer.php';
+require_once 'Includes/footer.php';
 ?>
 
 <?php
