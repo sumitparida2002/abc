@@ -24,12 +24,12 @@ if (isset($_POST['submit'])) {
             // Prepare the SQL statement to insert user data
 
             $stmt = "INSERT INTO users_hashed (name, email, hashed_password) VALUES(:name, :email, :hashed_password)";
-            $prepStmt = $myPDO -> prepare($stmt);
-            $prepStmt->execute(['name'=>$name, 'email'=>$email, 'hashed_password'=>$hashed_password]);
-            
+            $prepStmt = $myPDO->prepare($stmt);
+            $prepStmt->execute(['name' => $name, 'email' => $email, 'hashed_password' => $hashed_password]);
+
 
             $signUpErrorMsg = 'User created';
-            
+
             // SAVE USER DATA
 
             // Redirect to account page after successful sign-up

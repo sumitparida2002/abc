@@ -5,42 +5,64 @@ require_once 'head.php';
 require_once 'includes/header.php';
 ?>
 
+<?php
+
+
+
+
+
+$error = '';
+
+if (isset($_GET['submit'])) {
+    extract($_GET);
+
+    $check_sql = "SELECT * FROM users WHERE email = '$email'";
+    $check_result = $conn->query($check_sql);
+
+    if ($check_result->num_rows > 0) {
+        $error = "User with this email already exists.";
+    } else {
+        // Insert new user record
+        $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
+        $result = $conn->query($sql);
+
+        if ($result) {
+            $userFetch = "SELECT * FROM users WHERE name='$name' AND password='$password' ";
+
+
+            $result    = $conn->query($userFetch);
+            $user_info = $result->fetch_assoc();
+
+            $_SESSION['logged'] = '1';
+            $_SESSION['name']   = $user_info["name"];
+            $_SESSION['id']     = $user_info["id"];
+            header("location: account.php");
+        }
+    }
+}
+
+?>
+
 <main>
-    <!--
-        The method for the form is GET because we wanted to make sure that the password is
-        exposed and also any user can inject data into the URL field easily.
 
-        Also, we do not hash the password here so that the system is vulnerable to brute force
-        attack.
+    <div class="sign_up_page_flex_container">
+        <form action="./signup.php" method="get" class="signup_page_form">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" name="submit" value="Submit">
+            <?php if (!empty($error)) : ?>
+                <div class="alert alert-danger mt-3" role="alert"><?= $error ?></div>
+            <?php endif; ?>
+        </form>
 
-        Not using prepared statements here will enable hackers to inject their sql scripts.
 
-        Also, since the data coming from the form are not sanitized, hackers can inject Javascript
-        Code into the application.
-     -->
-<div class="sign_up_page_flex_container">
-    <form action="" method="get" class="signup_page_form">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit" name="submit" value="Submit">
-    </form>
-</div>
+    </div>
 </main>
 
 <?php
 require_once 'Includes/footer.php';
-?>
-
-<?php
-
-extract($_GET);
-if (isset($_GET[ 'submit' ])) {
- $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
- $conn->query($sql);
-}
-
 ?>

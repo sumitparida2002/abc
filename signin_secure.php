@@ -20,10 +20,10 @@ if (isset($_POST['submit'])) {
         $password = $_POST['password'];
 
         // Prepare the SQL statement to retrieve user information based on email
-        
+
         $stmt = "SELECT * FROM users_hashed WHERE email = :email";
-        $prepStmt = $myPDO -> prepare($stmt);
-        $prepStmt->execute(['email'=>$email]);
+        $prepStmt = $myPDO->prepare($stmt);
+        $prepStmt->execute(['email' => $email]);
 
         $row = $prepStmt->fetch(PDO::FETCH_ASSOC);
 

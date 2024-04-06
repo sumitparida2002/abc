@@ -47,26 +47,26 @@ require_once 'Includes/footer.php';
 
 extract($_GET);
 
-if (isset($_GET[ 'submit' ])) {
+if (isset($_GET['submit'])) {
 
- $sql       = "SELECT * FROM users WHERE name='$name'";
- $result    = $conn->query($sql);
- $user_info = $result->fetch_assoc();
- if (!isset($user_info[ "name" ]) || $user_info[ "name" ] == "") {
-  print("User name was not found.<br/>");
- } else {
-  $sql       = "SELECT * FROM users WHERE password='$password'";
-  $result    = $conn->query($sql);
-  $user_info = $result->fetch_assoc();
-  if (!isset($user_info[ "password" ]) || $user_info[ "password" ] == "") {
-   print("Password is incorrect.");
-  } else {
-   $_SESSION[ 'logged' ] = '1';
-   $_SESSION[ 'name' ]   = $user_info[ "name" ];
-   $_SESSION[ 'id' ]     = $user_info[ "id" ];
-   header("location: account.php");
-  }
- }
+    $sql       = "SELECT * FROM users WHERE name='$name'";
+    $result    = $conn->query($sql);
+    $user_info = $result->fetch_assoc();
+    if (!isset($user_info["name"]) || $user_info["name"] == "") {
+        print("User name was not found.<br/>");
+    } else {
+        $sql       = "SELECT * FROM users WHERE password='$password'";
+        $result    = $conn->query($sql);
+        $user_info = $result->fetch_assoc();
+        if (!isset($user_info["password"]) || $user_info["password"] == "") {
+            print("Password is incorrect.");
+        } else {
+            $_SESSION['logged'] = '1';
+            $_SESSION['name']   = $user_info["name"];
+            $_SESSION['id']     = $user_info["id"];
+            header("location: account.php");
+        }
+    }
 }
 
 ?>
