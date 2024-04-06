@@ -1,8 +1,8 @@
 <?php
 
-require_once('config.php');
-require_once('head.php');
-require_once('header.php');
+require_once 'config.php';
+require_once 'head.php';
+require_once 'Includes/header.php';
 
 $sql = "SELECT * FROM transactions WHERE user_id='$_SESSION[id]'";
 $result = $conn->query($sql);
@@ -27,6 +27,6 @@ $transactions = $result->fetch_all();
 </main>
 
 <?php
-require_once('footer.php');
+require_once 'Includes/footer.php';
 ?>
 
